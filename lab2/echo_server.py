@@ -22,7 +22,7 @@ def handle_connection(conn, addr):
 def start_server():
     # initialize socket
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s: # socket init
-        s.bind(HOST, PORT) #bind ip and port
+        s.bind((HOST, PORT)) #bind ip and port
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # set reuseaddr to 1
         s.listen() # listen for incoming connections
         conn, addr = s.accept() # socket referring to client, addr is client IP and Port
@@ -32,7 +32,7 @@ def start_server():
 # Start multithreaded echo server
 def start_threaded_server():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s: # socket init
-        s.bind(HOST, PORT) #bind ip and port
+        s.bind((HOST, PORT)) #bind ip and port
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # set reuseaddr to 1
         s.listen(2) # allow backlog of up to 2 connections ==> queue [waiting conn1, waiting conn2]
         while True:

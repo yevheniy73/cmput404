@@ -11,7 +11,7 @@ def send_requests(host, port, request):
     # Create a new socket in with block to ensure it's closed once we're done
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
         # Connect the socket to host:port
-        client_socket.connection((host, port))
+        client_socket.connect((host, port))
         # Send the request through the connected socket.
         client_socket.send(request)
         # Shit the socket to further writes. Tells server we're done sending.

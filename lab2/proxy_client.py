@@ -16,7 +16,7 @@ def get(host, port):
 
         chunk = s.recv(BYTES_TO_READ)
         result += chunk
-    
+    print(result)
     s.close() #must close the socket
     return result
 
